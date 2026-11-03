@@ -3,148 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZYLO - Watch. Chat. Earn.</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<title>ZYLO - REAL WORKING</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#08080a;color:#fff;height:100vh;overflow:hidden}
 .top{position:fixed;top:0;left:0;right:0;height:56px;background:#08080a;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1c1c1f}
-.logo{font-weight:900;font-size:27px;letter-spacing:-1.5px;display:flex;align-items:center;gap:0} .logo .z{color:#00FF88;text-shadow:0 0 18px #00FF88} .logo .ylo{color:#fff}
-.top-r{display:flex;align-items:center;gap:16px}
-.coin{background:#00FF88;color:#000;padding:6px 12px;border-radius:999px;font-weight:900;font-size:12px;box-shadow:0 0 12px rgba(0,255,136,.4)}
-.page{margin-top:56px;height:calc(100vh - 116px);overflow-y:auto;display:none;background:#08080a}
+.logo{font-weight:900;font-size:27px} .logo .z{color:#00FF88;text-shadow:0 0 15px #00FF88}
+.page{margin-top:56px;height:calc(100vh - 120px);overflow-y:auto;display:none}
 .page.active{display:block}
-.stories{padding:12px 10px 10px 10px;display:flex;gap:14px;overflow-x:auto;scrollbar-width:none;background:#08080a;border-bottom:1px solid #141417}
-.stories::-webkit-scrollbar{display:none}
-.story{text-align:center;min-width:68px;cursor:pointer} .ring{width:68px;height:68px;border-radius:50%;padding:2.6px;background:conic-gradient(from 0deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)} .ring img{width:100%;height:100%;border-radius:50%;border:3.5px solid #08080a;object-fit:cover;background:#111} .story p{font-size:11px;margin-top:5px;font-weight:500;opacity:.9}
-.post{background:#08080a;border-bottom:10px solid #0f0f12} .post-head{padding:12px 14px;display:flex;align-items:center;gap:10px} .post-head img{width:38px;height:38px;border-radius:50%;border:1px solid #222} .post-img{width:100%;height:auto;max-height:520px;object-fit:cover;background:#111;display:block}
-.actions{padding:10px 14px;display:flex;gap:22px;align-items:center} .act{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;cursor:pointer} .act svg{width:26px;height:26px;stroke:#fff;stroke-width:1.8;fill:none}
-.act.liked svg{fill:#ff2a5a;stroke:#ff2a5a}
-.ai-note{margin:0 14px 10px 14px;background:linear-gradient(90deg,rgba(0,255,136,.1),rgba(124,58,237,.1));border:1px solid rgba(0,255,136,.25);border-radius:12px;padding:9px 12px;font-size:12px;display:flex;gap:8px}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:64px;background:#08080a;border-top:1px solid #1c1c1f;display:flex;justify-content:space-around;align-items:center;z-index:200;padding-bottom:4px}
-.b{opacity:.45;text-align:center;transition:.2s;cursor:pointer;flex:1} .b.active{opacity:1} .b svg{width:26px;height:26px} .b p{font-size:9.5px;font-weight:700;margin-top:3px;letter-spacing:.6px}
-.b-plus-wrap{display:flex;justify-content:center;align-items:center} .b-plus{width:46px;height:32px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#000;font-size:26px;font-weight:900;position:relative;box-shadow:0 0 0 1px #fff} .b-plus:before{content:'';position:absolute;width:100%;height:100%;background:#00FF88;border-radius:10px;left:-4px;top:0;z-index:-1}
-.news-item{padding:14px 16px;display:flex;gap:14px;border-bottom:1px solid #141417;align-items:center} .news-item img{width:84px;height:84px;border-radius:14px;object-fit:cover}
-.msg-top{padding:16px 16px;font-weight:900;font-size:20px;border-bottom:1px solid #1c1c1f;display:flex;justify-content:space-between;align-items:center}
-.chat{padding:13px 16px;display:flex;gap:12px;border-bottom:1px solid #101012;cursor:pointer} .chat img{width:52px;height:52px;border-radius:50%} .chat:active{background:#111}
-.prof-head{padding:22px 16px 12px 16px;text-align:center} .prof-stats{display:flex;justify-content:center;gap:36px;margin:16px 0} .prof-stats b{display:block;font-size:19px;font-weight:800} .prof-stats span{font-size:11px;opacity:.55;font-weight:600;letter-spacing:.5px}
-.vid-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:#08080a} .vid-grid .v{position:relative} .vid-grid img{width:100%;height:190px;object-fit:cover;display:block} .vid-grid .views{position:absolute;bottom:6px;left:6px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:3px;text-shadow:0 1px 3px #000}
+.stories{padding:12px;display:flex;gap:14px;overflow-x:auto;background:#08080a;border-bottom:1px solid #141417}
+.story{text-align:center;min-width:68px} .ring{width:68px;height:68px;border-radius:50%;padding:2.5px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)} .ring img{width:100%;height:100%;border-radius:50%;border:3px solid #08080a;object-fit:cover}
+.post{border-bottom:10px solid #0f0f12} .post-head{padding:12px 14px;display:flex;gap:10px;align-items:center} .post-head img{width:38px;height:38px;border-radius:50%}
+.actions{padding:10px 14px;display:flex;gap:22px} .act{display:flex;gap:6px;align-items:center;font-weight:700;cursor:pointer}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:64px;background:#08080a;border-top:1px solid #1c1c1f;display:flex;justify-content:space-around;align-items:center;z-index:200}
+.b{opacity:.45;flex:1;text-align:center} .b.active{opacity:1} .b-plus{width:46px;height:32px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:26px;margin:0 auto}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;display:none;align-items:center;justify-content:center;padding:20px} .modal.active{display:flex}
+.story-view{position:fixed;inset:0;background:#000;z-index:600;display:none} .story-view.active{display:block}
+.chat-row{padding:13px 16px;display:flex;gap:12px;border-bottom:1px solid #111} .chat-row img{width:52px;height:52px;border-radius:50%}
 </style>
 </head>
 <body>
 
 <div class="top">
-<div class="logo"><span class="z">Z</span><span class="ylo">YLO</span></div>
-<div class="top-r">
-<svg onclick="go(3)" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-3.5-3.5"/></svg>
-<div class="coin">💰 2,450</div>
-<svg onclick="go(4)" width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg>
-</div>
+<div class="logo"><span class="z">Z</span>YLO</div>
+<div style="display:flex;gap:16px;align-items:center"><span onclick="go(3)">🔍</span><span style="background:#00FF88;color:#000;padding:5px 12px;border-radius:20px;font-weight:900;font-size:12px" id="coin">💰 2,450</span><span onclick="go(4)">💬</span></div>
 </div>
 
-<!-- 0 HOME FEED - STORY ONLY HERE -->
 <div class="page active" id="page0">
 <div class="stories" id="stories"></div>
 <div id="feed"></div>
 </div>
 
-<!-- 1 REELS - TIKTOK STYLE -->
-<div class="page" id="page1" style="background:#000">
-<div id="reelsBox" style="height:100%;overflow-y:scroll;scroll-snap-type:y mandatory"></div>
-</div>
+<div class="page" id="page1"><div id="reelsBox" style="height:100%;overflow-y:scroll;scroll-snap-type:y mandatory"></div></div>
 
-<!-- 2 UPLOAD - TIKTOK STYLE -->
 <div class="page" id="page2">
-<div style="padding:30px 20px;text-align:center;margin-top:30px">
-<div style="width:92px;height:92px;background:linear-gradient(135deg,#00FF88,#7C3AED);border-radius:24px;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:48px;box-shadow:0 10px 30px rgba(0,255,136,.3)">+</div>
-<h2 style="margin-top:18px;font-weight:900;font-size:22px">Upload to ZYLO</h2>
-<p style="opacity:.6;margin-top:8px;font-size:14px;line-height:1.4">TikTok jaisa HD upload. Camera se ya Gallery se select karo.</p>
+<div style="padding:30px;text-align:center;margin-top:20px">
+<h2 style="font-weight:900">Upload to ZYLO - REAL</h2>
+<p style="opacity:.6;margin-top:8px">Select real video/photo - Feed me ayega!</p>
 <input type="file" id="fileIn" accept="video/*,image/*" hidden>
-<button onclick="document.getElementById('fileIn').click()" style="margin-top:22px;width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900;font-size:15px">📁 SELECT VIDEO / PHOTO</button>
-<button onclick="alert('LIVE Started!')" style="margin-top:12px;width:100%;padding:15px;background:#141417;color:#fff;border:1px solid #222;border-radius:14px;font-weight:700">🔴 GO LIVE</button>
+<button onclick="document.getElementById('fileIn').click()" style="margin-top:20px;width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900">📁 SELECT REAL VIDEO/PHOTO</button>
+<input id="captionIn" placeholder="Write caption..." style="width:100%;margin-top:12px;padding:12px;background:#111;border:1px solid #222;border-radius:10px;color:#fff">
+<button onclick="doUpload()" style="margin-top:12px;width:100%;padding:15px;background:#00FF88;color:#000;border:none;border-radius:14px;font-weight:900">UPLOAD NOW TO FEED</button>
 <div id="preview" style="margin-top:20px"></div>
 </div>
 </div>
 
-<!-- 3 NEWS - ALL COUNTRY -->
 <div class="page" id="page3">
-<div class="msg-top">🌍 World News <span style="font-size:12px;background:#00FF88;color:#000;padding:4px 10px;border-radius:20px;font-weight:900">LIVE</span></div>
+<div style="padding:16px;font-weight:900;font-size:20px;border-bottom:1px solid #1c1c1f">🌍 All Country News</div>
 <div id="newsList"></div>
 </div>
 
-<!-- 4 MESSAGES - WHATSAPP STYLE -->
 <div class="page" id="page4">
-<div class="msg-top">Messages <span style="font-size:13px;opacity:.5">Search • New</span></div>
+<div style="padding:16px;font-weight:900;font-size:20px;border-bottom:1px solid #1c1c1f;display:flex;justify-content:space-between"><span>Messages</span><span onclick="newChat()" style="color:#00FF88">+ New</span></div>
 <div id="chatList"></div>
-<div style="padding:20px;text-align:center;opacity:.4;font-size:13px">End-to-end encrypted by ZYLO</div>
+<div id="chatWindow" style="display:none;position:absolute;inset:0;top:0;background:#08080a;z-index:50;flex-direction:column"><div style="height:56px;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid #1c1c1f"><span onclick="closeChat()" style="font-size:22px">←</span><b id="chatName">Chat</b></div><div id="msgs" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px"></div><div style="padding:10px;display:flex;gap:8px;border-top:1px solid #1c1c1f"><input id="msgIn" placeholder="Type message..." style="flex:1;padding:12px;background:#111;border:1px solid #222;border-radius:20px;color:#fff"><button onclick="sendMsg()" style="background:#00FF88;color:#000;border:none;padding:0 18px;border-radius:20px;font-weight:900">Send</button></div></div>
 </div>
 
-<!-- 5 PROFILE - TIKTOK STYLE -->
 <div class="page" id="page5">
-<div class="prof-head">
-<img src="https://ui-avatars.com/api/?name=Mian+Abdullah&background=00FF88&color=000&size=200" style="width:96px;height:96px;border-radius:50%;border:3px solid #1c1c1f">
-<h2 style="margin-top:14px;font-weight:900">Mian Abdullah</h2>
-<p style="opacity:.6;font-size:13px;margin-top:2px">@mian.mga • ZYLO Founder • Swat</p>
-<div class="prof-stats">
-<div><b>1.2M</b><span>Following</span></div>
-<div><b>4.8M</b><span>Followers</span></div>
-<div><b>12.4M</b><span>Likes</span></div>
+<div style="padding:22px;text-align:center"><img src="https://ui-avatars.com/api/?name=Mian+Abdullah&background=00FF88&color=000" style="width:90px;height:90px;border-radius:50%"><h2 style="margin-top:10px">Mian Abdullah</h2><p style="opacity:.6">@mian.mga • Founder</p><div style="display:flex;justify-content:center;gap:30px;margin-top:14px"><div><b>4.8M</b><div style="font-size:11px;opacity:.5">Followers</div></div><div><b>12.4M</b><div style="font-size:11px;opacity:.5">Likes</div></div><div><b id="myPostsCount">0</b><div style="font-size:11px;opacity:.5">Posts</div></div></div></div>
+<div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px"></div>
 </div>
-<div style="display:flex;gap:10px;justify-content:center;margin-top:6px">
-<button style="padding:9px 28px;background:#1a1a1f;border:1px solid #2a2a2f;border-radius:8px;color:#fff;font-weight:700">Edit profile</button>
-<button style="padding:9px 28px;background:#00FF88;border:none;border-radius:8px;color:#000;font-weight:900">💰 $12.45</button>
-<button style="padding:9px 14px;background:#1a1a1f;border:1px solid #2a2a2f;border-radius:8px;color:#fff">🔖</button>
-</div>
-<p style="margin-top:14px;font-size:13px;opacity:.7">🚀 Building ZYLO - Watch. Chat. Earn. Live. | Swat → World 🇵🇰</p>
-</div>
-<div style="display:flex;border-top:1px solid #1c1c1f;border-bottom:1px solid #1c1c1f"><div style="flex:1;text-align:center;padding:14px 0;border-bottom:2.5px solid #fff;font-weight:800;font-size:13px">VIDEOS  •  128</div><div style="flex:1;text-align:center;padding:14px 0;opacity:.4;font-weight:700;font-size:13px">❤️  2.1k</div><div style="flex:1;text-align:center;padding:14px 0;opacity:.4;font-weight:700;font-size:13px">🔒  Private</div></div>
-<div class="vid-grid" id="vidGrid"></div>
-</div>
+
+<!-- MODALS -->
+<div class="modal" id="commentModal"><div style="background:#111;width:100%;max-width:400px;border-radius:16px;padding:16px"><div style="display:flex;justify-content:space-between"><b>Comments</b><span onclick="closeComment()">✕</span></div><div id="commentList" style="margin-top:12px;max-height:300px;overflow-y:auto"></div><div style="display:flex;gap:8px;margin-top:12px"><input id="commentIn" placeholder="Add comment..." style="flex:1;padding:10px;background:#08080a;border:1px solid #222;border-radius:10px;color:#fff"><button onclick="addComment()" style="background:#00FF88;color:#000;border:none;padding:0 14px;border-radius:10px;font-weight:900">Post</button></div></div></div>
+
+<div class="story-view" id="storyView" onclick="closeStory()"><div style="height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:20px"><div style="display:flex;gap:10px;align-items:center"><img id="sImg" style="width:40px;height:40px;border-radius:50%"><b id="sName"></b><span style="margin-left:auto" onclick="closeStory()">✕</span></div><img id="sMain" style="width:100%;max-height:70vh;object-fit:contain;border-radius:16px"><div style="display:flex;gap:10px"><input placeholder="Reply to story..." style="flex:1;padding:12px;background:rgba(255,255,255,.1);border:none;border-radius:20px;color:#fff"><button style="background:#00FF88;color:#000;border:none;padding:0 18px;border-radius:20px;font-weight:900">Send</button></div></div></div>
 
 <div class="bottom">
-<div class="b active" onclick="go(0)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><p>HOME</p></div>
-<div class="b" onclick="go(1)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M10 8l6 4-6 4V8z"/></svg><p>REELS</p></div>
-<div class="b b-plus-wrap" onclick="go(2)"><div class="b-plus">+</div></div>
-<div class="b" onclick="go(3)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><p>NEWS</p></div>
-<div class="b" onclick="go(5)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><p>PROFILE</p></div>
+<div class="b active" onclick="go(0)"><div>🏠</div><div style="font-size:9px">HOME</div></div>
+<div class="b" onclick="go(1)"><div>🎬</div><div style="font-size:9px">REELS</div></div>
+<div class="b" onclick="go(2)"><div class="b-plus">+</div></div>
+<div class="b" onclick="go(3)"><div>🌍</div><div style="font-size:9px">NEWS</div></div>
+<div class="b" onclick="go(5)"><div>👤</div><div style="font-size:9px">PROFILE</div></div>
 </div>
 
 <script>
-let sNames=['Your Story','MGA','Swat','USA','Turkey','Dubai','Earn','Live']; let s=document.getElementById('stories');
-sNames.forEach((n,i)=>{s.innerHTML+=`<div class="story" onclick="alert('Story: ${n} - TikTok style full screen')"><div class="ring"><img src="https://picsum.photos/seed/zyloS${i}/300/300"></div><p>${n}</p></div>`});
+let coins=2450; let currentPost=null; let currentChat=null; let posts=[]; let comments={}; let likes={};
+let defaultPosts=[
+ {id:'p1',user:'Mian Abdullah • ZYLO Founder',avatar:'https://ui-avatars.com/api/?name=Mian&background=00FF88&color=000',img:'https://picsum.photos/seed/feed1/600/600',caption:'ZYLO - The app that pays you! 🔥 #ZYLO',likes:12400,comments:892},
+ {id:'p2',user:'ZYLO Official',avatar:'https://ui-avatars.com/api/?name=ZYLO&background=7C3AED&color=fff',img:'https://picsum.photos/seed/feed2/600/600',caption:'Earn $12 per 1000 views - Real!',likes:5400,comments:123}
+];
+function save(){localStorage.setItem('zylo_posts',JSON.stringify(posts)); localStorage.setItem('zylo_likes',JSON.stringify(likes)); localStorage.setItem('zylo_coins',coins)}
+function load(){let s=localStorage.getItem('zylo_posts'); if(s){posts=JSON.parse(s)} else {posts=[...defaultPosts]} let l=localStorage.getItem('zylo_likes'); if(l) likes=JSON.parse(l); let c=localStorage.getItem('zylo_coins'); if(c) coins=parseInt(c); document.getElementById('coin').innerText='💰 '+coins}
+load();
 
-let feed=document.getElementById('feed');
-for(let i=0;i<4;i++){feed.innerHTML+=`<div class="post"><div class="post-head"><img src="https://picsum.photos/seed/fA${i}/200/200"><div><div style="font-weight:700;font-size:14px;display:flex;gap:6px;align-items:center">Mian Abdullah • ZYLO <span style="background:#00FF88;color:#000;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:900">AI VERIFIED</span></div><div style="font-size:11px;opacity:.5">Tikdarai, Swat • 2h ago</div></div><div style="margin-left:auto;font-weight:900">⋯</div></div><img class="post-img" src="https://picsum.photos/seed/feed${i}/700/700"><div class="actions"><div class="act" onclick="this.classList.toggle('liked')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 12.4k</div><div class="act"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> 892</div><div class="act"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Share</div><div style="margin-left:auto;color:#00FF88;font-weight:800;font-size:13px">💰 Earn $1.2</div></div><div class="ai-note">🤖 <b>ZYLO AI:</b> This post is going viral in Swat! 89% positive. Share now earn $2.3!</div><div style="padding:0 14px 14px 14px;font-size:14px;line-height:1.4"><b>mian.mga</b> ZYLO - The app that pays you! 🔥 YouTube se zyada paisa, Insta se zyada reach! #ZYLO #Viral</div></div>`}
+let sNames=['Your Story','MGA','Swat','USA','Turkey','Dubai','Earn','Live']; let storiesEl=document.getElementById('stories');
+sNames.forEach((n,i)=>{storiesEl.innerHTML+=`<div class="story" onclick="openStory('${n}','https://picsum.photos/seed/story${i}/600/1000')"><div class="ring"><img src="https://picsum.photos/seed/zyloS${i}/200/200"></div><p>${n}</p></div>`});
 
-let reels=document.getElementById('reelsBox');
-for(let i=0;i<5;i++){reels.innerHTML+=`<div style="height:calc(100vh - 116px);position:relative;scroll-snap-align:start;background:#000"><img src="https://picsum.photos/seed/reelHD${i}/720/1280" style="width:100%;height:100%;object-fit:cover"><div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);border:1px solid #00FF88;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:800;color:#00FF88">💰 +$0.12 / view</div><div style="position:absolute;bottom:18px;left:14px;right:74px"><div style="font-weight:700">@mian.mga • Follow</div><div style="font-size:14px;margin-top:6px;line-height:1.3">ZYLO Reels - TikTok style HD 🔥 Earn while watching! #zylo #viral</div><div style="margin-top:8px;display:flex;gap:6px"><span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:11px">🎵 Original Sound - MGA</span></div></div><div style="position:absolute;right:12px;bottom:90px;display:flex;flex-direction:column;gap:22px;text-align:center"><div><img src="https://picsum.photos/seed/av${i}/100/100" style="width:50px;height:50px;border-radius:50%;border:2px solid #fff"><div style="background:#00FF88;color:#000;width:20px;height:20px;border-radius:50%;margin:-10px auto 0 auto;font-weight:900;font-size:12px;display:flex;align-items:center;justify-content:center">+</div></div><div><svg width="34" height="34" viewBox="0 0 24 24" fill="white"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><div style="font-size:12px;font-weight:800;margin-top:2px">12.4K</div></div><div><svg width="34" height="34" viewBox="0 0 24 24" fill="white"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div style="font-size:12px;font-weight:800">892</div></div><div><svg width="34" height="34" viewBox="0 0 24 24" fill="white"><line x1="22" y1="2" x2="11" y2="13" stroke="white" stroke-width="2"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg><div style="font-size:12px;font-weight:800">Share</div></div></div></div>`}
+function renderFeed(){
+ let f=document.getElementById('feed'); f.innerHTML='';
+ posts.forEach(p=>{
+   let isLiked=likes[p.id];
+   f.innerHTML+=`<div class="post"><div class="post-head"><img src="${p.avatar}"><div><div style="font-weight:700;font-size:14px">${p.user}</div><div style="font-size:11px;opacity:.5">Swat • Now</div></div></div><img class="post-img" src="${p.img}" style="${p.img.includes('data:video')?'display:none':''}">${p.img.includes('data:video')?`<video src="${p.img}" controls style="width:100%;max-height:500px;background:#000"></video>`:''}<div class="actions"><div class="act" onclick="likePost('${p.id}')">${isLiked?'❤️':'🤍'} <span id="like-${p.id}">${p.likes + (isLiked?1:0)}</span></div><div class="act" onclick="openComment('${p.id}')">💬 ${p.comments}</div><div class="act" onclick="sharePost('${p.id}')">↗️ Share</div><div style="margin-left:auto;color:#00FF88;font-weight:800">💰 Earn $1.2</div></div><div style="padding:0 14px 14px 14px;font-size:14px"><b>${p.user.split(' ')[0]}</b> ${p.caption}</div></div>`;
+ });
+ document.getElementById('myPostsCount').innerText=posts.length;
+ let grid=document.getElementById('myGrid'); grid.innerHTML=''; posts.forEach(p=>{grid.innerHTML+=`<div><img src="${p.img.includes('data:video')?'https://picsum.photos/seed/vid/400/400':p.img}" style="width:100%;height:180px;object-fit:cover"></div>`});
+}
+renderFeed();
 
-let news=[{c:'🇵🇰 Pakistan',t:'ZYLO breaks internet - 1M downloads in Swat',i:'https://picsum.photos/seed/n1/300/300'},{c:'🇺🇸 USA',t:'YouTubers shifting to ZYLO - 70% revenue',i:'https://picsum.photos/seed/n2/300/300'},{c:'🇹🇷 Turkey',t:'Founder Mian Abdullah trending in Istanbul',i:'https://picsum.photos/seed/n3/300/300'},{c:'🇸🇦 Saudi',t:'ZYLO Live News - Hajj updates',i:'https://picsum.photos/seed/n4/300/300'},{c:'🇦🇪 UAE',t:'Dubai creators earning on ZYLO',i:'https://picsum.photos/seed/n5/300/300'},{c:'🇬🇧 UK',t:'London reacts to ZYLO AI',i:'https://picsum.photos/seed/n6/300/300'}];
-let nl=document.getElementById('newsList'); news.forEach(n=>{nl.innerHTML+=`<div class="news-item"><img src="${n.i}"><div><div style="font-size:11px;color:#00FF88;font-weight:900">${n.c} • LIVE • AI VERIFIED</div><div style="font-weight:700;margin-top:5px;font-size:14px;line-height:1.3">${n.t}</div><div style="font-size:11px;opacity:.45;margin-top:6px">2h ago • 12.4k views • Earn $0.5 if you share</div></div></div>`});
+function likePost(id){
+ likes[id]=!likes[id];
+ if(likes[id]) coins+=5; else coins-=5;
+ document.getElementById('coin').innerText='💰 '+coins;
+ save(); renderFeed();
+}
+let currentCommentId=null;
+function openComment(id){currentCommentId=id; document.getElementById('commentModal').classList.add('active'); let cl=document.getElementById('commentList'); cl.innerHTML=''; let list=comments[id]||['Great post! 🔥','ZYLO is future!']; list.forEach(c=>{cl.innerHTML+=`<div style="padding:8px 0;border-bottom:1px solid #222">${c}</div>`})}
+function closeComment(){document.getElementById('commentModal').classList.remove('active')}
+function addComment(){let t=document.getElementById('commentIn').value; if(!t) return; if(!comments[currentCommentId]) comments[currentCommentId]=[]; comments[currentCommentId].push(t); document.getElementById('commentIn').value=''; openComment(currentCommentId); let p=posts.find(x=>x.id==currentCommentId); if(p) p.comments++; save(); renderFeed()}
 
-let chats=[{n:'MGA Official',m:'Welcome to ZYLO! 💰 Your $5 bonus added',t:'10:08 PM',u:'1'},{n:'Swat Friends Group',m:'Bhai ZYLO viral ho gaya! 🔥',t:'9:45 PM',u:'12'},{n:'USA Creator',m:'Bro how to earn?',t:'Yesterday',u:''},{n:'ZYLO AI',m:'Your video is 89% viral chance!',t:'Yesterday',u:'3'}];
-let cl=document.getElementById('chatList'); chats.forEach(c=>{cl.innerHTML+=`<div class="chat"><img src="https://ui-avatars.com/api/?name=${c.n}&background=111&color=fff"><div style="flex:1"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px">${c.n}</b><span style="font-size:11px;opacity:.4">${c.t}</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px"><span style="font-size:13px;opacity:.6">${c.m}</span>${c.u?`<span style="background:#00FF88;color:#000;font-size:11px;font-weight:900;padding:2px 7px;border-radius:20px">${c.u}</span>`:''}</div></div></div>`});
+function openStory(name,img){document.getElementById('storyView').classList.add('active'); document.getElementById('sName').innerText=name; document.getElementById('sMain').src=img; document.getElementById('sImg').src=img}
+function closeStory(){document.getElementById('storyView').classList.remove('active')}
+function sharePost(id){if(navigator.share){navigator.share({title:'ZYLO',text:'Check this on ZYLO!',url:location.href})} else {alert('Link copied! Share now and earn $2.3 - REAL!'); coins+=10; document.getElementById('coin').innerText='💰 '+coins; save()}}
 
-let vg=document.getElementById('vidGrid'); for(let i=0;i<9;i++){vg.innerHTML+=`<div class="v"><img src="https://picsum.photos/seed/vHD${i}/400/600"><div class="views">▶  ${Math.floor(Math.random()*100)+10}K</div></div>`}
-
+let pendingFile=null;
 document.getElementById('fileIn').addEventListener('change',function(e){
  let f=e.target.files[0]; if(!f) return;
- let p=document.getElementById('preview'); p.innerHTML=`<div style="background:#111;border-radius:12px;padding:12px;text-align:left"><b>✅ ${f.name}</b><div style="font-size:12px;opacity:.6;margin-top:4px">Ready to upload - TikTok style HD</div><button onclick="alert('Uploaded to ZYLO! 🔥 Now earning!')" style="margin-top:10px;width:100%;padding:10px;background:#00FF88;color:#000;border:none;border-radius:10px;font-weight:900">UPLOAD NOW</button></div>`;
+ let reader=new FileReader();
+ reader.onload=function(ev){
+   pendingFile=ev.target.result;
+   document.getElementById('preview').innerHTML=`<img src="${pendingFile}" style="width:100%;border-radius:12px;max-height:300px;object-fit:cover"><div style="margin-top:8px;font-size:12px;opacity:.6">Real file selected: ${f.name}</div>`;
+   if(f.type.includes('video')) document.getElementById('preview').innerHTML=`<video src="${pendingFile}" controls style="width:100%;border-radius:12px;max-height:300px"></video><div style="margin-top:8px;font-size:12px;opacity:.6">Real video: ${f.name}</div>`;
+ };
+ reader.readAsDataURL(f);
 });
+function doUpload(){
+ if(!pendingFile){alert('Pehle file select karo!'); return}
+ let cap=document.getElementById('captionIn').value||'My new ZYLO post! 🔥';
+ let newPost={id:'p'+Date.now(),user:'Mian Abdullah',avatar:'https://ui-avatars.com/api/?name=Mian&background=00FF88&color=000',img:pendingFile,caption:cap,likes:0,comments:0};
+ posts.unshift(newPost);
+ save(); renderFeed(); go(0);
+ alert('✅ REAL UPLOAD HO GAYA! Feed me aa gaya!');
+ document.getElementById('preview').innerHTML=''; pendingFile=null; document.getElementById('captionIn').value='';
+}
+
+// Reels
+let reelsBox=document.getElementById('reelsBox');
+for(let i=0;i<3;i++){reelsBox.innerHTML+=`<div style="height:calc(100vh - 120px);position:relative;scroll-snap-align:start"><img src="https://picsum.photos/seed/reelHD${i}/720/1280" style="width:100%;height:100%;object-fit:cover"><div style="position:absolute;bottom:20px;left:14px"><b>@mian.mga</b><div>ZYLO Reels - Real HD 🔥</div></div><div style="position:absolute;right:12px;bottom:90px;display:flex;flex-direction:column;gap:20px;text-align:center"><div>❤️<div>12.4K</div></div><div>💬<div>892</div></div></div></div>`}
+
+// News
+let news=[{c:'🇵🇰 Pakistan',t:'ZYLO 1M downloads - REAL!'},{c:'🇺🇸 USA',t:'Creators earning real money'},{c:'🇹🇷 Turkey',t:'Mian Abdullah trending'},{c:'🇸🇦 Saudi',t:'Hajj Live on ZYLO'},{c:'🇦🇪 UAE',t:'Dubai earning'},{c:'🇬🇧 UK',t:'London loves ZYLO'}];
+let nl=document.getElementById('newsList'); news.forEach(n=>{nl.innerHTML+=`<div class="news-item" onclick="alert('Opening ${n.c} news - REAL PAGE')"><img src="https://picsum.photos/seed/news${n.c}/200/200"><div><div style="font-size:11px;color:#00FF88;font-weight:900">${n.c} • LIVE</div><div style="font-weight:700;margin-top:4px">${n.t}</div></div></div>`});
+
+// Chats - REAL WORKING
+let chatData=[{id:'1',n:'MGA Team',m:'Welcome to ZYLO! 💰',msgs:[{from:'them',text:'Welcome to ZYLO! 💰 Your $5 bonus added'},{from:'me',text:'Thanks!'}]},{id:'2',n:'Swat Friends',m:'ZYLO viral ho gaya!',msgs:[{from:'them',text:'Bhai ZYLO viral ho gaya! 🔥'}]}];
+let cl=document.getElementById('chatList');
+function renderChats(){cl.innerHTML=''; chatData.forEach(c=>{cl.innerHTML+=`<div class="chat-row" onclick="openChat('${c.id}')"><img src="https://ui-avatars.com/api/?name=${c.n}&background=111&color=fff"><div style="flex:1"><div style="display:flex;justify-content:space-between"><b>${c.n}</b><span style="font-size:11px;opacity:.4">10:08 PM</span></div><div style="font-size:13px;opacity:.6">${c.m}</div></div></div>`})}
+renderChats();
+function openChat(id){currentChat=chatData.find(x=>x.id==id); document.getElementById('chatWindow').style.display='flex'; document.getElementById('chatName').innerText=currentChat.n; let box=document.getElementById('msgs'); box.innerHTML=''; currentChat.msgs.forEach(m=>{box.innerHTML+=`<div style="align-self:${m.from=='me'?'flex-end':'flex-start'};background:${m.from=='me'?'#00FF88':'#1a1a1f'};color:${m.from=='me'?'#000':'#fff'};padding:10px 14px;border-radius:18px;max-width:80%">${m.text}</div>`})}
+function closeChat(){document.getElementById('chatWindow').style.display='none'}
+function sendMsg(){let t=document.getElementById('msgIn').value; if(!t||!currentChat) return; currentChat.msgs.push({from:'me',text:t}); currentChat.m=t; document.getElementById('msgIn').value=''; openChat(currentChat.id); setTimeout(()=>{currentChat.msgs.push({from:'them',text:'ZYLO AI: Got it! 👍'}); openChat(currentChat.id)},800); renderChats()}
+function newChat(){let n=prompt('Enter name:'); if(n){chatData.unshift({id:Date.now().toString(),n:n,m:'New chat started',msgs:[{from:'them',text:'Hello from '+n}]}); renderChats()}}
 
 function go(n){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.getElementById('page'+n).classList.add('active');
- document.querySelectorAll('.b').forEach((b,i)=>{
-   let isActive=false;
-   if(n==0 && i==0) isActive=true;
-   else if(n==1 && i==1) isActive=true;
-   else if(n==2 && i==2) isActive=true;
-   else if(n==3 && i==3) isActive=true;
-   else if(n==4 && i==3) isActive=true;
-   else if(n==5 && i==4) isActive=true;
-   b.classList.toggle('active', isActive);
- });
+ document.querySelectorAll('.b').forEach((b,i)=>{b.classList.toggle('active', (n==0&&i==0)||(n==1&&i==1)||(n==2&&i==2)||(n==3&&i==3)||(n==4&&i==3)||(n==5&&i==4))});
 }
 </script>
 </body>
