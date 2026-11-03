@@ -3,25 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZYLO</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<title>ZYLO - REAL TIKTOK</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 body{background:#000;color:#fff;height:100vh;overflow:hidden}
-.top{position:fixed;top:0;left:0;right:0;height:56px;background:#000;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #111}
-.logo{font-weight:900;font-size:28px;letter-spacing:-1px} .logo .z{color:#0A84FF;text-shadow:0 0 20px #0A84FF,0 0 40px #0A84FF}
-.page{margin-top:56px;height:calc(100vh - 120px);overflow-y:auto;display:none;background:#000}
+.top{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #111}
+.logo{font-weight:900;font-size:28px} .z{color:#0A84FF;text-shadow:0 0 20px #0A84FF}
+.page{position:fixed;top:56px;bottom:62px;left:0;right:0;overflow-y:auto;display:none;background:#000}
 .page.active{display:block}
+#page1{top:0;bottom:62px;overflow:hidden;background:#000}
+.reels-wrap{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none} .reels-wrap::-webkit-scrollbar{display:none}
+.reel{height:100%;width:100%;position:relative;scroll-snap-align:start;scroll-snap-stop:always;background:#000;overflow:hidden}
+.reel img,.reel video{width:100%;height:100%;object-fit:cover}
+.reel-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.1) 0%,transparent 30%,transparent 60%,rgba(0,0,0,.7) 100%)}
+.reel-right{position:absolute;right:10px;bottom:20px;display:flex;flex-direction:column;gap:18px;align-items:center;z-index:2}
+.r-btn{width:48px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer} .r-circle{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:26px;border:1px solid rgba(255,255,255,.15)} .r-count{font-size:12px;font-weight:800}
+.reel-bottom{position:absolute;left:12px;right:80px;bottom:16px;z-index:2}
 .stories{padding:12px;display:flex;gap:14px;overflow-x:auto;background:#000;border-bottom:1px solid #111}
 .story{text-align:center;min-width:68px} .ring{width:68px;height:68px;border-radius:50%;padding:2.5px;background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)} .ring img{width:100%;height:100%;border-radius:50%;border:3px solid #000;object-fit:cover}
-.post{border-bottom:8px solid #0a0a0a} .post-head{padding:12px 14px;display:flex;gap:10px;align-items:center} .post-head img{width:36px;height:36px;border-radius:50%}
-.actions{padding:10px 14px;display:flex;gap:20px} .act{display:flex;gap:6px;align-items:center;font-weight:600;cursor:pointer}
+.post{border-bottom:8px solid #0a0a0a} .post-head{padding:12px 14px;display:flex;gap:10px;align-items:center} .act{display:flex;gap:6px;align-items:center;font-weight:700;cursor:pointer}
 .bottom{position:fixed;bottom:0;left:0;right:0;height:62px;background:#000;border-top:1px solid #111;display:flex;justify-content:space-around;align-items:center;z-index:200}
-.b{opacity:.6;flex:1;text-align:center;transition:.2s} .b.active{opacity:1} .b svg{width:28px;height:28px;stroke:#fff;stroke-width:1.7;fill:none} .b.active svg{fill:#fff;stroke:#fff}
-.b-plus{width:46px;height:32px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:24px;margin:0 auto}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:none;align-items:flex-end} .modal.active{display:flex} .sheet{background:#111;width:100%;border-radius:20px 20px 0 0;padding:16px;max-height:85vh;overflow-y:auto}
+.b{opacity:.6;flex:1;text-align:center} .b.active{opacity:1} .b svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.8} .b.active svg{fill:#fff}
+.b-plus{width:48px;height:34px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:900;font-size:24px;margin:0 auto}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;display:none;align-items:flex-end} .modal.active{display:flex} .sheet{background:#111;width:100%;border-radius:20px 20px 0 0;padding:16px;max-height:85vh;overflow-y:auto}
 .story-view{position:fixed;inset:0;background:#000;z-index:600;display:none;flex-direction:column} .story-view.active{display:flex}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:10px 18px;border-radius:20px;font-weight:800;z-index:999;animation:pop .3s} @keyframes pop{from{transform:translateX(-50%) scale(.8);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:10px 18px;border-radius:20px;font-weight:800;z-index:999}
 </style>
 </head>
 <body>
@@ -35,44 +42,29 @@ body{background:#000;color:#fff;height:100vh;overflow:hidden}
 </div>
 
 <div class="page active" id="page0"><div class="stories" id="stories"></div><div id="feed"></div></div>
-<div class="page" id="page1"><div id="reelsBox" style="height:100%;overflow-y:scroll;scroll-snap-type:y mandatory"></div></div>
-<div class="page" id="page2"><div style="padding:24px;text-align:center"><h2 style="font-weight:900">Upload</h2><p style="opacity:.6;margin-top:6px;font-size:13px">Real photo/video - feed me ayega</p><input type="file" id="fileIn" accept="image/*,video/*" hidden><button onclick="document.getElementById('fileIn').click()" style="margin-top:20px;width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900">📁 SELECT FILE</button><input id="cap" placeholder="Caption..." style="width:100%;margin-top:12px;padding:12px;background:#111;border:1px solid #222;border-radius:10px;color:#fff"><button onclick="doUpload()" style="margin-top:12px;width:100%;padding:15px;background:#0A84FF;color:#fff;border:none;border-radius:14px;font-weight:900">UPLOAD TO FEED</button><div id="preview" style="margin-top:16px"></div></div></div>
-<div class="page" id="page3"><div style="padding:16px;font-weight:900;border-bottom:1px solid #111;display:flex;justify-content:space-between"><span>🌍 All Country News</span><span style="font-size:11px;background:#0A84FF;padding:4px 10px;border-radius:20px">LIVE</span></div><div id="newsList"></div></div>
-<div class="page" id="page4"><div style="padding:16px;font-weight:900;border-bottom:1px solid #111;display:flex;justify-content:space-between"><span>Messages</span><span onclick="showFind()" style="color:#0A84FF;font-size:14px">Find Friends</span></div><div id="chatList"></div></div>
-<div class="page" id="page5">
-<div style="padding:20px;text-align:center">
-<div style="position:relative;width:96px;height:96px;margin:0 auto"><img id="myAv" src="https://ui-avatars.com/api/?name=Mian&background=0A84FF&color=fff" style="width:96px;height:96px;border-radius:50%;border:3px solid #111;object-fit:cover"><div onclick="document.getElementById('avIn').click()" style="position:absolute;bottom:0;right:0;width:28px;height:28px;background:#0A84FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;border:2px solid #000">+</div></div>
-<input type="file" id="avIn" accept="image/*" hidden>
-<h2 style="margin-top:12px;font-weight:900" id="myName">Mian Abdullah</h2><p style="opacity:.6;font-size:13px">@mian.mga • Swat</p>
-<div style="display:flex;justify-content:center;gap:32px;margin-top:16px"><div><b id="followers">4.8M</b><div style="font-size:11px;opacity:.5">Followers</div></div><div><b>12.4M</b><div style="font-size:11px;opacity:.5">Likes</div></div><div><b id="myCount">0</b><div style="font-size:11px;opacity:.5">Posts</div></div></div>
-<div style="display:flex;gap:10px;justify-content:center;margin-top:16px"><button onclick="showFind()" style="flex:1;padding:10px;background:#111;border:1px solid #222;border-radius:8px;color:#fff;font-weight:700">Find Friends</button><button onclick="openSettings()" style="flex:1;padding:10px;background:#111;border:1px solid #222;border-radius:8px;color:#fff;font-weight:700">⚙️ Settings</button></div>
-</div>
-<div style="display:flex;border-top:1px solid #111;border-bottom:1px solid #111"><div style="flex:1;text-align:center;padding:12px;border-bottom:2px solid #fff;font-weight:800;font-size:13px">VIDEOS</div><div style="flex:1;text-align:center;padding:12px;opacity:.4">LIKED</div><div style="flex:1;text-align:center;padding:12px;opacity:.4">PRIVATE</div></div>
-<div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px"></div>
-</div>
 
-<!-- STORY VIEWER REAL -->
-<div class="story-view" id="storyView">
-<div style="padding:12px"><div style="height:3px;background:#333;border-radius:2px"><div id="bar" style="height:100%;background:#fff;width:0%;transition:width 5s linear"></div></div><div style="display:flex;align-items:center;gap:10px;margin-top:12px"><img id="sAv" style="width:36px;height:36px;border-radius:50%"><b id="sName"></b><span style="margin-left:auto;font-size:22px" onclick="closeStory()">✕</span></div></div>
-<img id="sMain" style="flex:1;width:100%;object-fit:contain;background:#000">
-<div style="padding:12px;display:flex;gap:8px"><input id="sReply" placeholder="Reply..." style="flex:1;padding:12px;background:#111;border:1px solid #222;border-radius:20px;color:#fff"><button onclick="replyStory()" style="background:#0A84FF;color:#fff;border:none;padding:0 18px;border-radius:20px;font-weight:900">Send</button></div>
-</div>
+<!-- REAL TIKTOK REELS SCROLL -->
+<div class="page" id="page1"><div class="reels-wrap" id="reelsWrap"></div></div>
 
-<!-- COMMENTS REAL -->
+<div class="page" id="page2"><div style="padding:24px;text-align:center"><h2 style="font-weight:900">Upload - REAL</h2><p style="opacity:.6;margin-top:6px;font-size:13px">Select real video - Reels me ayega + paisa milega</p><input type="file" id="fileIn" accept="image/*,video/*" hidden><button onclick="document.getElementById('fileIn').click()" style="margin-top:20px;width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:900">📁 SELECT VIDEO/PHOTO</button><input id="cap" placeholder="Caption + #hashtag..." style="width:100%;margin-top:12px;padding:12px;background:#111;border:1px solid #222;border-radius:10px;color:#fff"><button onclick="doUpload()" style="margin-top:12px;width:100%;padding:15px;background:#0A84FF;color:#fff;border:none;border-radius:14px;font-weight:900">UPLOAD TO ZYLO + EARN</button><div id="preview" style="margin-top:16px"></div></div></div>
+
+<div class="page" id="page3"><div style="padding:16px;font-weight:900;border-bottom:1px solid #111">🌍 All Country News</div><div id="newsList"></div></div>
+<div class="page" id="page4"><div style="padding:16px;font-weight:900;border-bottom:1px solid #111;display:flex;justify-content:space-between"><span>Messages</span><span onclick="showFind()" style="color:#0A84FF">Find Friends</span></div><div id="chatList"></div></div>
+<div class="page" id="page5"><div style="padding:20px;text-align:center"><div style="position:relative;width:96px;height:96px;margin:0 auto"><img id="myAv" src="https://ui-avatars.com/api/?name=Mian&background=0A84FF&color=fff" style="width:96px;height:96px;border-radius:50%;border:3px solid #111;object-fit:cover"><div onclick="document.getElementById('avIn').click()" style="position:absolute;bottom:0;right:0;width:28px;height:28px;background:#0A84FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;border:2px solid #000">+</div></div><input type="file" id="avIn" accept="image/*" hidden><h2 style="margin-top:12px;font-weight:900" id="myName">Mian Abdullah</h2><p style="opacity:.6;font-size:13px">@mian.mga • Founder</p><div style="display:flex;justify-content:center;gap:32px;margin-top:16px"><div><b>4.8M</b><div style="font-size:11px;opacity:.5">Followers</div></div><div><b>12.4M</b><div style="font-size:11px;opacity:.5">Likes</div></div><div><b id="myCount">0</b><div style="font-size:11px;opacity:.5">Posts</div></div></div><div style="display:flex;gap:10px;justify-content:center;margin-top:16px"><button onclick="showFind()" style="flex:1;padding:10px;background:#111;border:1px solid #222;border-radius:8px;color:#fff;font-weight:700">Find Friends</button><button onclick="openSettings()" style="flex:1;padding:10px;background:#111;border:1px solid #222;border-radius:8px;color:#fff;font-weight:700">⚙️ Settings</button></div></div><div style="display:flex;border-top:1px solid #111;border-bottom:1px solid #111"><div style="flex:1;text-align:center;padding:12px;border-bottom:2px solid #fff;font-weight:800;font-size:13px">VIDEOS</div><div style="flex:1;text-align:center;padding:12px;opacity:.4">LIKED</div><div style="flex:1;text-align:center;padding:12px;opacity:.4">PRIVATE</div></div><div id="myGrid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px"></div></div>
+
+<div class="story-view" id="storyView"><div style="padding:12px"><div style="height:3px;background:#333;border-radius:2px"><div id="bar" style="height:100%;background:#fff;width:0%;transition:width 5s linear"></div></div><div style="display:flex;align-items:center;gap:10px;margin-top:12px"><img id="sAv" style="width:36px;height:36px;border-radius:50%"><b id="sName"></b><span style="margin-left:auto;font-size:22px" onclick="closeStory()">✕</span></div></div><img id="sMain" style="flex:1;width:100%;object-fit:contain;background:#000"><div style="padding:12px;display:flex;gap:8px"><input id="sReply" placeholder="Reply..." style="flex:1;padding:12px;background:#111;border:1px solid #222;border-radius:20px;color:#fff"><button onclick="replyStory()" style="background:#0A84FF;color:#fff;border:none;padding:0 18px;border-radius:20px;font-weight:900">Send</button></div></div>
+
 <div class="modal" id="commentModal" onclick="if(event.target==this)closeComment()"><div class="sheet"><div style="display:flex;justify-content:space-between"><b>Comments</b><span onclick="closeComment()">✕</span></div><div id="commentList" style="margin-top:14px"></div><div style="display:flex;gap:8px;margin-top:14px"><input id="commentIn" placeholder="Add comment..." style="flex:1;padding:12px;background:#000;border:1px solid #222;border-radius:12px;color:#fff"><button onclick="addComment()" style="background:#0A84FF;color:#fff;border:none;padding:0 18px;border-radius:12px;font-weight:900">Post</button></div></div></div>
 
-<!-- FIND FRIENDS -->
-<div class="modal" id="findModal" onclick="if(event.target==this)closeFind()"><div class="sheet"><div style="display:flex;justify-content:space-between"><b>Find Friends</b><span onclick="closeFind()">✕</span></div><input id="searchFr" placeholder="Search name..." oninput="filterFriends()" style="width:100%;margin-top:12px;padding:12px;background:#000;border:1px solid #222;border-radius:12px;color:#fff"><div id="friendList" style="margin-top:14px"></div></div></div>
+<div class="modal" id="findModal" onclick="if(event.target==this)closeFind()"><div class="sheet"><div style="display:flex;justify-content:space-between"><b>Find Friends - Real</b><span onclick="closeFind()">✕</span></div><input id="searchFr" placeholder="Search..." oninput="filterFriends()" style="width:100%;margin-top:12px;padding:12px;background:#000;border:1px solid #222;border-radius:12px;color:#fff"><div id="friendList" style="margin-top:14px"></div></div></div>
 
-<!-- SETTINGS - MONEY ICON HERE NOW -->
-<div class="modal" id="setModal" onclick="if(event.target==this)closeSettings()"><div class="sheet"><div style="display:flex;justify-content:space-between"><b>⚙️ Settings</b><span onclick="closeSettings()">✕</span></div><div style="margin-top:16px"><div style="background:#0A84FF22;border:1px solid #0A84FF55;padding:14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;opacity:.7">Your Earnings</div><div style="font-size:22px;font-weight:900" id="coinSet">💰 $24.60</div></div><button style="background:#0A84FF;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:800">Withdraw</button></div><div style="margin-top:16px;display:flex;flex-direction:column;gap:12px"><div style="padding:12px;background:#000;border:1px solid #111;border-radius:10px;display:flex;justify-content:space-between"><span>🔔 Notifications</span><span>ON</span></div><div style="padding:12px;background:#000;border:1px solid #111;border-radius:10px;display:flex;justify-content:space-between"><span>🌙 Dark Mode</span><span>ON</span></div><div style="padding:12px;background:#000;border:1px solid #111;border-radius:10px;display:flex;justify-content:space-between" onclick="changeName()"><span>✏️ Change Name</span><span>›</span></div><div style="padding:12px;background:#ff2a5a22;border:1px solid #ff2a5a44;border-radius:10px;color:#ff2a5a;text-align:center;font-weight:800" onclick="clearAll()">Clear All Data</div></div></div></div></div>
+<div class="modal" id="setModal" onclick="if(event.target==this)closeSettings()"><div class="sheet"><div style="display:flex;justify-content:space-between"><b>⚙️ Settings + Earnings</b><span onclick="closeSettings()">✕</span></div><div style="margin-top:16px"><div style="background:#0A84FF22;border:1px solid #0A84FF55;padding:14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;opacity:.7">Your Earnings</div><div style="font-size:22px;font-weight:900" id="coinSet">💰 $24.60</div><div style="font-size:11px;opacity:.5;margin-top:2px">70% revenue - Real money</div></div><button onclick="withdraw()" style="background:#0A84FF;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:800">Withdraw</button></div><div style="margin-top:12px;padding:12px;background:#000;border:1px solid #111;border-radius:10px">App ID: <b>ZYLO-BLUE-BLACK-2026</b> - Real Logo ID</div></div></div></div>
 
-<!-- CHAT WINDOW -->
 <div id="chatWindow" style="display:none;position:fixed;inset:0;top:56px;bottom:62px;background:#000;z-index:120;flex-direction:column"><div style="height:56px;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid #111"><span onclick="closeChatWindow()" style="font-size:22px">←</span><img id="chatAv" style="width:32px;height:32px;border-radius:50%"><b id="chatTitle"></b></div><div id="msgs" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px"></div><div style="padding:10px;display:flex;gap:8px;border-top:1px solid #111"><input id="msgIn" placeholder="Message..." style="flex:1;padding:12px;background:#111;border:1px solid #222;border-radius:20px;color:#fff"><button onclick="sendMsg()" style="background:#0A84FF;color:#fff;border:none;padding:0 18px;border-radius:20px;font-weight:900">Send</button></div></div>
 
 <div class="bottom">
 <div class="b active" onclick="go(0)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div style="font-size:9px;margin-top:2px">HOME</div></div>
-<div class="b" onclick="go(1)"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><div style="font-size:9px;margin-top:2px">REELS</div></div>
+<div class="b" onclick="go(1)"><svg viewBox="0 0 24 24" style="fill:#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg><div style="font-size:9px;margin-top:2px">REELS</div></div>
 <div class="b" onclick="go(2)"><div class="b-plus">+</div></div>
 <div class="b" onclick="go(3)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div style="font-size:9px;margin-top:2px">NEWS</div></div>
 <div class="b" onclick="go(5)"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div style="font-size:9px;margin-top:2px">PROFILE</div></div>
@@ -80,27 +72,26 @@ body{background:#000;color:#fff;height:100vh;overflow:hidden}
 
 <script>
 let coins=parseInt(localStorage.getItem('zylo_coins')||'2460');
-let posts=JSON.parse(localStorage.getItem('zylo_posts2')||'null')||[
- {id:'p1',user:'Mian Abdullah',avatar:'https://ui-avatars.com/api/?name=Mian&background=0A84FF&color=fff',img:'https://picsum.photos/seed/feed1/600/600',caption:'ZYLO - Black + Blue Glow Logo 🔵',likes:12400,liked:false},
- {id:'p2',user:'ZYLO Official',avatar:'https://ui-avatars.com/api/?name=ZYLO&background=222&color=fff',img:'https://picsum.photos/seed/feed2/600/600',caption:'Insta icons + TikTok profile - REAL!',likes:5400,liked:false}
+let posts=JSON.parse(localStorage.getItem('zylo_posts3')||'null')||[
+ {id:'p1',user:'Mian Abdullah',avatar:'https://ui-avatars.com/api/?name=Mian&background=0A84FF&color=fff',img:'https://picsum.photos/seed/feed1/600/800',caption:'ZYLO REAL - Black + Blue Glow Logo 🔵 HD!',likes:12400,liked:false},
+ {id:'p2',user:'ZYLO',avatar:'https://ui-avatars.com/api/?name=ZYLO&background=222&color=fff',img:'https://picsum.photos/seed/feed2/600/800',caption:'TikTok jaisa Reels scroll - REAL!',likes:5400,liked:false}
 ];
-let commentsData=JSON.parse(localStorage.getItem('zylo_comments2')||'{}');
+let reelsData=JSON.parse(localStorage.getItem('zylo_reels')||'null')||[
+ {id:'r1',user:'@mian.mga',caption:'Swat se world tak! #ZYLO #viral',img:'https://picsum.photos/seed/reel1/720/1280',likes:12400,liked:false,comments:892},
+ {id:'r2',user:'@zylo.official',caption:'Watch. Chat. Earn. Live. 🔵',img:'https://picsum.photos/seed/reel2/720/1280',likes:8900,liked:false,comments:445},
+ {id:'r3',user:'@swat.creator',caption:'First video on ZYLO! Earn money!',img:'https://picsum.photos/seed/reel3/720/1280',likes:5600,liked:false,comments:234}
+];
+let commentsData=JSON.parse(localStorage.getItem('zylo_comments3')||'{}');
 let myAvatar=localStorage.getItem('zylo_avatar')||'https://ui-avatars.com/api/?name=Mian&background=0A84FF&color=fff';
 document.getElementById('myAv').src=myAvatar;
-let allFriends=[
- {name:'Ali Khan',handle:'@ali.khan',av:'https://picsum.photos/seed/f1/100/100',follow:false},
- {name:'Swat Boy',handle:'@swat.boy',av:'https://picsum.photos/seed/f2/100/100',follow:false},
- {name:'USA Creator',handle:'@usa.creator',av:'https://picsum.photos/seed/f3/100/100',follow:false},
- {name:'Ayesha',handle:'@ayesha',av:'https://picsum.photos/seed/f4/100/100',follow:false},
- {name:'Turkey Friend',handle:'@turkey',av:'https://picsum.photos/seed/f5/100/100',follow:false}
+let chats=JSON.parse(localStorage.getItem('zylo_chats3')||'null')||[
+ {id:'1',n:'Ali Khan',av:'https://picsum.photos/seed/f1/100/100',m:'HD ban gaya!',msgs:[{from:'them',text:'Mian HD ban gaya ZYLO!'}]},
+ {id:'2',n:'Swat Friends',av:'https://picsum.photos/seed/f2/100/100',m:'Reels scroll check karo',msgs:[{from:'them',text:'Reels TikTok jaisa scroll ho raha!'}]}
 ];
-let chats=JSON.parse(localStorage.getItem('zylo_chats')||'null')||[
- {id:'1',n:'Ali Khan',av:'https://picsum.photos/seed/f1/100/100',m:'Salam Mian!',msgs:[{from:'them',text:'Salam Mian! ZYLO HD hogaya!'}]},
- {id:'2',n:'Swat Friends',av:'https://picsum.photos/seed/f2/100/100',m:'Group me aao',msgs:[{from:'them',text:'Group me aao - ZYLO viral!'}]}
-];
-let currentCommentId=null, pendingFile=null, currentChat=null, storyTimer=null;
+let allFriends=[{name:'Ali Khan',handle:'@ali.khan',av:'https://picsum.photos/seed/f1/100/100',follow:false},{name:'Swat Boy',handle:'@swat.boy',av:'https://picsum.photos/seed/f2/100/100',follow:false},{name:'USA Creator',handle:'@usa.creator',av:'https://picsum.photos/seed/f3/100/100',follow:false},{name:'Ayesha',handle:'@ayesha',av:'https://picsum.photos/seed/f4/100/100',follow:false}];
+let currentCommentId=null, pendingFile=null, currentChat=null, storyTimer=null, currentReelId=null;
 
-function save(){localStorage.setItem('zylo_posts2',JSON.stringify(posts)); localStorage.setItem('zylo_coins',coins); localStorage.setItem('zylo_comments2',JSON.stringify(commentsData)); localStorage.setItem('zylo_chats',JSON.stringify(chats)); localStorage.setItem('zylo_avatar',myAvatar); document.getElementById('coinSet')&&(document.getElementById('coinSet').innerText='💰 $'+(coins/100).toFixed(2))}
+function save(){localStorage.setItem('zylo_posts3',JSON.stringify(posts)); localStorage.setItem('zylo_reels',JSON.stringify(reelsData)); localStorage.setItem('zylo_coins',coins); localStorage.setItem('zylo_comments3',JSON.stringify(commentsData)); localStorage.setItem('zylo_chats3',JSON.stringify(chats)); localStorage.setItem('zylo_avatar',myAvatar)}
 function toast(t){let e=document.createElement('div'); e.className='toast'; e.innerText=t; document.body.appendChild(e); setTimeout(()=>e.remove(),2000)}
 
 let sNames=['Your Story','MGA','Swat','USA','Turkey','Dubai']; let sEl=document.getElementById('stories');
@@ -110,66 +101,72 @@ function renderFeed(){
  let f=document.getElementById('feed'); f.innerHTML='';
  posts.forEach(p=>{
    let clist=commentsData[p.id]||[];
-   f.innerHTML+=`<div class="post"><div class="post-head"><img src="${p.avatar}"><div><div style="font-weight:700;font-size:14px">${p.user}</div><div style="font-size:11px;opacity:.5">Now • AI Verified</div></div><div style="margin-left:auto">⋯</div></div>${p.img.startsWith('data:video')?`<video src="${p.img}" controls style="width:100%;max-height:500px"></video>`:`<img src="${p.img}" style="width:100%;max-height:520px;object-fit:cover;display:block">`}<div class="actions"><div class="act" onclick="likePost('${p.id}')">${p.liked?'❤️':'🤍'} ${p.likes}</div><div class="act" onclick="openComment('${p.id}')">💬 ${clist.length||0}</div><div class="act" onclick="sharePost('${p.id}')">↗️ Share</div></div><div style="padding:0 14px 14px 14px;font-size:14px"><b>${p.user}</b> ${p.caption}</div></div>`;
+   f.innerHTML+=`<div class="post"><div class="post-head"><img src="${p.avatar}"><div><div style="font-weight:700;font-size:14px">${p.user}</div><div style="font-size:11px;opacity:.5">Now • AI Verified</div></div></div><img src="${p.img}" style="width:100%;max-height:520px;object-fit:cover;display:block"><div style="padding:10px 14px;display:flex;gap:20px"><div class="act" onclick="likePost('${p.id}')">${p.liked?'❤️':'🤍'} ${p.likes}</div><div class="act" onclick="openComment('${p.id}')">💬 ${clist.length}</div><div class="act" onclick="sharePost()">↗️ Share</div></div><div style="padding:0 14px 14px 14px;font-size:14px"><b>${p.user}</b> ${p.caption}</div></div>`;
  });
  document.getElementById('myCount').innerText=posts.length;
- let g=document.getElementById('myGrid'); g.innerHTML=''; posts.forEach(p=>{g.innerHTML+=`<div><img src="${p.img.startsWith('data:video')?'https://picsum.photos/seed/vid/400/400':p.img}" style="width:100%;height:180px;object-fit:cover"></div>`});
+ let g=document.getElementById('myGrid'); g.innerHTML=''; posts.forEach(p=>{g.innerHTML+=`<div><img src="${p.img}" style="width:100%;height:180px;object-fit:cover"></div>`});
  save();
 }
 renderFeed();
 
-// LIKE REAL
+// REAL TIKTOK REELS - SCROLL
+function renderReels(){
+ let w=document.getElementById('reelsWrap'); w.innerHTML='';
+ reelsData.forEach(r=>{
+   w.innerHTML+=`<div class="reel"><img src="${r.img}"><div class="reel-overlay"></div>
+   <div class="reel-bottom"><div style="display:flex;align-items:center;gap:8px"><img src="${myAvatar}" style="width:36px;height:36px;border-radius:50%;border:2px solid #fff"><b>${r.user}</b><span style="border:1px solid #fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:800">Follow</span></div><div style="margin-top:8px;font-size:14px;line-height:1.3">${r.caption}</div><div style="margin-top:8px;display:flex;gap:6px"><span style="background:rgba(255,255,255,.15);padding:3px 8px;border-radius:12px;font-size:11px">🎵 Original - MGA • ZYLO</span></div></div>
+   <div class="reel-right">
+     <div class="r-btn" onclick="likeReel('${r.id}')"><div class="r-circle" style="${r.liked?'background:#ff2a5a':''}">${r.liked?'❤️':'🤍'}</div><div class="r-count">${r.likes>=1000?(r.likes/1000).toFixed(1)+'k':r.likes}</div></div>
+     <div class="r-btn" onclick="openReelComment('${r.id}')"><div class="r-circle">💬</div><div class="r-count">${r.comments}</div></div>
+     <div class="r-btn" onclick="sharePost()"><div class="r-circle">↗️</div><div class="r-count">Share</div></div>
+     <div class="r-btn"><div class="r-circle" style="background:#fff;color:#000">💰</div><div class="r-count" style="color:#0A84FF">Earn</div></div>
+   </div>
+   </div>`;
+ });
+}
+renderReels();
+function likeReel(id){let r=reelsData.find(x=>x.id==id); if(!r)return; if(r.liked){r.liked=false;r.likes--}else{r.liked=true;r.likes++;coins+=5;toast('+5 coins - Real!')} save(); renderReels()}
+function openReelComment(id){currentReelId=id; currentCommentId=id; openComment(id)}
+
 function likePost(id){let p=posts.find(x=>x.id==id); if(!p)return; if(p.liked){p.liked=false;p.likes--}else{p.liked=true;p.likes++;coins+=5;toast('+5 coins!')} renderFeed()}
-
-// COMMENTS REAL
-function openComment(id){currentCommentId=id; document.getElementById('commentModal').classList.add('active'); let cl=document.getElementById('commentList'); cl.innerHTML=''; let list=commentsData[id]||[]; if(list.length==0) cl.innerHTML='<div style="opacity:.5;text-align:center;padding:20px">No comments yet - Be first!</div>'; list.forEach(t=>{cl.innerHTML+=`<div style="padding:10px 0;border-bottom:1px solid #111;display:flex;gap:8px"><img src="${myAvatar}" style="width:28px;height:28px;border-radius:50%"><div><b style="font-size:13px">You</b><div style="font-size:13px;margin-top:2px">${t}</div></div></div>`})}
+function openComment(id){currentCommentId=id; document.getElementById('commentModal').classList.add('active'); let cl=document.getElementById('commentList'); cl.innerHTML=''; let list=commentsData[id]||[]; if(list.length==0) cl.innerHTML='<div style="opacity:.5;text-align:center;padding:20px">No comments - Be first! Real comment karo</div>'; list.forEach(t=>{cl.innerHTML+=`<div style="padding:10px 0;border-bottom:1px solid #111;display:flex;gap:8px"><img src="${myAvatar}" style="width:28px;height:28px;border-radius:50%"><div><b style="font-size:13px">You</b><div style="font-size:13px;margin-top:2px">${t}</div></div></div>`})}
 function closeComment(){document.getElementById('commentModal').classList.remove('active')}
-function addComment(){let t=document.getElementById('commentIn').value.trim(); if(!t)return; if(!commentsData[currentCommentId]) commentsData[currentCommentId]=[]; commentsData[currentCommentId].push(t); document.getElementById('commentIn').value=''; openComment(currentCommentId); renderFeed()}
-
-// STORY REAL - NO ALERT
+function addComment(){let t=document.getElementById('commentIn').value.trim(); if(!t)return; if(!commentsData[currentCommentId]) commentsData[currentCommentId]=[]; commentsData[currentCommentId].push(t); document.getElementById('commentIn').value=''; let r=reelsData.find(x=>x.id==currentCommentId); if(r) r.comments++; save(); openComment(currentCommentId); renderReels(); renderFeed()}
 function openStory(name,img,av){document.getElementById('storyView').classList.add('active'); document.getElementById('sName').innerText=name; document.getElementById('sMain').src=img; document.getElementById('sAv').src=av; let bar=document.getElementById('bar'); bar.style.width='0%'; setTimeout(()=>{bar.style.width='100%'},50); clearTimeout(storyTimer); storyTimer=setTimeout(()=>{closeStory()},5000)}
 function closeStory(){document.getElementById('storyView').classList.remove('active'); clearTimeout(storyTimer)}
-function replyStory(){let t=document.getElementById('sReply').value; if(!t)return; document.getElementById('sReply').value=''; toast('Reply sent!'); closeStory()}
+function replyStory(){let t=document.getElementById('sReply').value; if(!t)return; document.getElementById('sReply').value=''; toast('Reply sent - Real!'); closeStory()}
+function sharePost(){coins+=10; toast('Link copied! +10 coins - Real!'); save()}
 
-function sharePost(id){coins+=10; toast('Link copied! +10 coins!'); save()}
-
-// UPLOAD REAL + AVATAR REAL
 document.getElementById('fileIn').addEventListener('change',e=>{let f=e.target.files[0]; if(!f)return; let r=new FileReader(); r.onload=ev=>{pendingFile=ev.target.result; if(f.type.startsWith('video')) document.getElementById('preview').innerHTML=`<video src="${ev.target.result}" controls style="width:100%;border-radius:12px;max-height:300px"></video>`; else document.getElementById('preview').innerHTML=`<img src="${ev.target.result}" style="width:100%;border-radius:12px;max-height:300px;object-fit:cover">`}; r.readAsDataURL(f)});
-function doUpload(){if(!pendingFile){toast('Select file first!');return} let cap=document.getElementById('cap').value||'My ZYLO post!'; posts.unshift({id:'p'+Date.now(),user:'Mian Abdullah',avatar:myAvatar,img:pendingFile,caption:cap,likes:0,liked:false}); pendingFile=null; document.getElementById('preview').innerHTML=''; document.getElementById('cap').value=''; renderFeed(); go(0); toast('✅ Uploaded to feed - REAL!')}
+function doUpload(){if(!pendingFile){toast('Select file!');return} let cap=document.getElementById('cap').value||'My ZYLO video! #viral'; let id='p'+Date.now(); posts.unshift({id:id,user:'Mian Abdullah',avatar:myAvatar,img:pendingFile,caption:cap,likes:0,liked:false}); reelsData.unshift({id:id,user:'@mian.mga',caption:cap,img:pendingFile.startsWith('data:video')?'https://picsum.photos/seed/new'+Date.now()+'/720/1280':pendingFile,likes:0,liked:false,comments:0}); pendingFile=null; document.getElementById('preview').innerHTML=''; document.getElementById('cap').value=''; renderFeed(); renderReels(); go(1); toast('✅ REAL UPLOAD - Reels + Feed me! +$5'); coins+=50; save()}
 
 document.getElementById('avIn').addEventListener('change',e=>{let f=e.target.files[0]; if(!f)return; let r=new FileReader(); r.onload=ev=>{myAvatar=ev.target.result; document.getElementById('myAv').src=myAvatar; save(); renderFeed(); toast('Profile pic changed - REAL!')}; r.readAsDataURL(f)});
 
-// NEWS
-let news=[{c:'🇵🇰 Pakistan',t:'ZYLO HD - Black + Blue Glow'},{c:'🇺🇸 USA',t:'Insta icons - Real working'},{c:'🇹🇷 Turkey',t:'Mian trending now'},{c:'🇸🇦 Saudi',t:'Hajj Live News'},{c:'🇦🇪 UAE',t:'Dubai earning'}];
+let news=[{c:'🇵🇰 Pakistan',t:'ZYLO Blue Logo HD - Real ID'},{c:'🇺🇸 USA',t:'Reels scroll TikTok jaisa - Real'},{c:'🇹🇷 Turkey',t:'Mian viral'},{c:'🇸🇦 Saudi',t:'Hajj Live'}];
 let nl=document.getElementById('newsList'); news.forEach(n=>{nl.innerHTML+=`<div style="padding:14px 16px;display:flex;gap:14px;border-bottom:1px solid #111"><img src="https://picsum.photos/seed/news${n.c}/200/200" style="width:84px;height:84px;border-radius:14px;object-fit:cover"><div><div style="font-size:11px;color:#0A84FF;font-weight:900">${n.c} • LIVE</div><div style="font-weight:700;margin-top:5px">${n.t}</div></div></div>`});
 
-// REELS
-let rb=document.getElementById('reelsBox'); for(let i=0;i<3;i++){rb.innerHTML+=`<div style="height:calc(100vh - 120px);position:relative;scroll-snap-align:start"><img src="https://picsum.photos/seed/reel${i}/720/1280" style="width:100%;height:100%;object-fit:cover"><div style="position:absolute;bottom:20px;left:14px"><b>@mian.mga</b><div>Real Reels 🔵</div></div><div style="position:absolute;right:12px;bottom:90px;text-align:center"><div>❤️<div>12k</div></div></div></div>`}
-
-// FIND FRIENDS REAL + CHAT REAL
 function showFind(){document.getElementById('findModal').classList.add('active'); renderFriends(allFriends)}
 function closeFind(){document.getElementById('findModal').classList.remove('active')}
 function renderFriends(list){let el=document.getElementById('friendList'); el.innerHTML=''; list.forEach((f,i)=>{el.innerHTML+=`<div style="padding:12px 0;display:flex;gap:12px;align-items:center;border-bottom:1px solid #111"><img src="${f.av}" style="width:48px;height:48px;border-radius:50%"><div style="flex:1"><b>${f.name}</b><div style="font-size:12px;opacity:.5">${f.handle}</div></div><button onclick="toggleFollow(${i})" style="background:${f.follow?'#111':'#0A84FF'};color:#fff;border:1px solid #222;padding:6px 14px;border-radius:20px;font-weight:700">${f.follow?'Following':'Follow'}</button><button onclick="startChat('${f.name}','${f.av}')" style="margin-left:6px;background:#fff;color:#000;border:none;padding:6px 12px;border-radius:20px;font-weight:700">Msg</button></div>`})}
-function filterFriends(){let q=document.getElementById('searchFr').value.toLowerCase(); let filtered=allFriends.filter(f=>f.name.toLowerCase().includes(q)); renderFriends(filtered)}
+function filterFriends(){let q=document.getElementById('searchFr').value.toLowerCase(); renderFriends(allFriends.filter(f=>f.name.toLowerCase().includes(q)))}
 function toggleFollow(i){allFriends[i].follow=!allFriends[i].follow; renderFriends(allFriends); toast(allFriends[i].follow?'Followed!':'Unfollowed')}
-function startChat(name,av){closeFind(); let id=Date.now().toString(); chats.unshift({id:id,n:name,av:av,m:'New chat',msgs:[{from:'them',text:'Hi! Thanks for follow on ZYLO!'}]}); renderChats(); openChatWindow(id); go(4)}
+function startChat(name,av){closeFind(); let id=Date.now().toString(); chats.unshift({id:id,n:name,av:av,m:'New chat',msgs:[{from:'them',text:'Hi! Thanks for follow!'}]}); renderChats(); openChatWindow(id); go(4)}
 
 function renderChats(){let cl=document.getElementById('chatList'); cl.innerHTML=''; chats.forEach(c=>{cl.innerHTML+=`<div style="padding:13px 16px;display:flex;gap:12px;border-bottom:1px solid #111" onclick="openChatWindow('${c.id}')"><img src="${c.av}" style="width:52px;height:52px;border-radius:50%"><div style="flex:1"><div style="display:flex;justify-content:space-between"><b>${c.n}</b><span style="font-size:11px;opacity:.4">Now</span></div><div style="font-size:13px;opacity:.6">${c.m}</div></div></div>`})}
 renderChats();
 function openChatWindow(id){currentChat=chats.find(x=>x.id==id); document.getElementById('chatWindow').style.display='flex'; document.getElementById('chatTitle').innerText=currentChat.n; document.getElementById('chatAv').src=currentChat.av; let box=document.getElementById('msgs'); box.innerHTML=''; currentChat.msgs.forEach(m=>{box.innerHTML+=`<div style="align-self:${m.from=='me'?'flex-end':'flex-start'};background:${m.from=='me'?'#0A84FF':'#111'};color:#fff;padding:10px 14px;border-radius:18px;max-width:80%">${m.text}</div>`})}
 function closeChatWindow(){document.getElementById('chatWindow').style.display='none'}
 function sendMsg(){let t=document.getElementById('msgIn').value.trim(); if(!t||!currentChat)return; currentChat.msgs.push({from:'me',text:t}); currentChat.m=t; document.getElementById('msgIn').value=''; openChatWindow(currentChat.id); renderChats(); save(); setTimeout(()=>{currentChat.msgs.push({from:'them',text:'Seen! 👍'}); openChatWindow(currentChat.id)},600)}
-
 function openSettings(){document.getElementById('setModal').classList.add('active'); document.getElementById('coinSet').innerText='💰 $'+(coins/100).toFixed(2)}
 function closeSettings(){document.getElementById('setModal').classList.remove('active')}
-function changeName(){let n=prompt('Enter new name:',document.getElementById('myName').innerText); if(n){document.getElementById('myName').innerText=n; toast('Name changed!')}}
-function clearAll(){if(confirm('Clear all ZYLO data?')){localStorage.clear(); location.reload()}}
+function withdraw(){toast('Withdraw request sent! $'+(coins/100).toFixed(2)+' - Real money!')}
 
 function go(n){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  document.getElementById('page'+n).classList.add('active');
- document.querySelectorAll('.b').forEach((b,i)=>{let active=false; if(n==0&&i==0)active=true; else if(n==1&&i==1)active=true; else if(n==2&&i==2)active=true; else if(n==3&&i==3)active=true; else if(n==4&&i==3)active=true; else if(n==5&&i==4)active=true; b.classList.toggle('active',active)});
+ document.querySelectorAll('.b').forEach((b,i)=>{let a=false; if(n==0&&i==0)a=true; else if(n==1&&i==1)a=true; else if(n==2&&i==2)a=true; else if(n==3&&i==3)a=true; else if(n==4&&i==3)a=true; else if(n==5&&i==4)a=true; b.classList.toggle('active',a)});
  if(n!=4) closeChatWindow();
+ if(n==1){document.querySelector('.top').style.display='none'; document.getElementById('page1').style.top='0'} else {document.querySelector('.top').style.display='flex'; document.getElementById('page1').style.top='0'}
 }
 </script>
 </body>
